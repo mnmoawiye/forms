@@ -1,19 +1,14 @@
-const form = document.getElementById('myForm');
-const inputField = document.getElementById('inputField');
+document.getElementById("formElement").addEventListener("submit", function(eventObject) {
+  eventObject.preventDefault();
 
-const alphanumericPattern = /^[a-zA-Z0-9]+$/;
+  const userInput = document.getElementById("userTextField");
+  const alphanumericCheck = /^[a-zA-Z0-9]+$/;
 
-inputField.addEventListener('input', function() {
-    if (alphanumericPattern.test(inputField.value)) {
-        inputField.setCustomValidity('');
-    } else {
-        inputField.setCustomValidity('Please enter only alphanumeric characters');
-    }
-});
-
-form.addEventListener('submit', function(event) {
-    if (!alphanumericPattern.test(inputField.value)) {
-        event.preventDefault();
-        inputField.reportValidity();
-    }
+  if (alphanumericCheck.test(userInput.value)) {
+      userInput.setCustomValidity("Input accepted! Form ready to submit.");
+  } else {
+      userInput.setCustomValidity("Oops! Only letters and numbers are allowed.");
+  }
+  
+  userInput.reportValidity();
 });
