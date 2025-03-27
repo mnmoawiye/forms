@@ -1,13 +1,12 @@
-document.getElementById("myForm").addEventListener("submit", function(eventTrigger) {
-  eventTrigger.preventDefault();
+document.getElementById("userForm").addEventListener("submit", function(event) {
+  event.preventDefault();
 
-  const userInput = document.getElementById("inputField");
-  const patternCheck = /^[a-zA-Z0-9]+$/;
+  const userInput = document.getElementById("textInput");
+  const pattern = /^[a-zA-Z0-9]+$/;
 
-  if (patternCheck.test(userInput.value)) {
-      userInput.setCustomValidity("Great! Your input is valid and ready to submit.");
+  if (pattern.test(userInput.value)) {
+      userInput.setCustomValidity("Success! Your input has been accepted.");
   } else {
-      userInput.setCustomValidity("Oops! Use only letters and numbers in your input.");
+      userInput.setCustomValidity("Error! Please enter only letters and numbers.");
   }
-  userInput.reportValidity();
 });
